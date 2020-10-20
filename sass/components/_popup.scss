@@ -10,6 +10,16 @@
   visibility: hidden;
   transition: all 0.3s;
 
+  @supports (backdrop-filter: blur(10px)) or
+    (-webkit-backdrop-filter: blur(10px)) {
+    background: rgba($color-black, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  @include respond(tab-port) {
+  }
+
   &__content {
     @include absCenter;
 
@@ -22,12 +32,25 @@
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.25);
     transition: all 0.4s 0.2s;
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
   }
 
   &__left {
     flex: 1;
     display: flex;
     flex-direction: column;
+
+    @include respond(phone) {
+      flex: none;
+      flex-direction: row;
+    }
   }
 
   &__right {
@@ -37,12 +60,21 @@
     align-items: center;
     justify-content: space-around;
     padding: 1.5rem 2.5rem;
+
+    @include respond(phone) {
+      flex: none;
+    }
   }
 
   &__img {
     display: block;
     width: 100%;
     flex: 1;
+
+    @include respond(phone) {
+      flex: none;
+      width: 50%;
+    }
   }
 
   &__text {

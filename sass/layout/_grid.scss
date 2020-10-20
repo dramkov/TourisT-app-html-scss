@@ -4,28 +4,43 @@
   display: flex;
   justify-content: space-between;
 
+  @include respond(tab-port) {
+    flex-direction: column;
+    max-width: 50rem;
+  }
+
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
+
+    @include respond(tab-port) {
+      margin-bottom: $gutter-vertical-small;
+    }
   }
 
-  .col-1-of-2 {
+  [class^='col-'] {
     width: 50%;
+    margin-right: 0;
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
+
+      @include respond(tab-port) {
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
 
-  .col-1-of-4 {
-    &:not(:last-child) {
-      margin-right: $gutter-horizontal;
-    }
-  }
+  // .col-1-of-2 {
+  //   width: 50%;
+  // }
 
-  .col-1-of-3 {
-    width: 50%;
+  // .col-1-of-4 {
+  // }
 
-    &:not(:last-child) {
-      margin-right: $gutter-horizontal;
-    }
-  }
+  // .col-1-of-3 {
+  //   width: 50%;
+  // }
 }
